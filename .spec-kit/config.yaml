@@ -1,0 +1,13 @@
+# Spec-Kit Configuration for Todo Full-Stack Application
+spec_directory: ./specs
+output_directory: ./
+templates:
+  - name: "nextjs-frontend"
+    path: "./templates/nextjs"
+  - name: "fastapi-backend"
+    path: "./templates/fastapi"
+  - name: "postgresql-db"
+    path: "./templates/postgresql"
+validation:
+  enabled: true
+  schema_path: "./schemas/spec-schema.json"

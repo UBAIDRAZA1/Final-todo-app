@@ -1,0 +1,67 @@
+project create
+
+pip install specifyplus
+
+specifyplus init .
+
+
+
+
+cd frontend
+npm install
+npm run build
+npm run dev
+
+
+- Backend:
+.\venv\Scripts\python -m uvicorn main:app --reload --port 8001
+
+
+
+ab aap applications ko fir se start karna chahte hain toh ye steps follow karein:
+
+     1. Sabse pehle, Docker Desktop open karein (agar close hai toh)
+     2. Command prompt ya PowerShell open karein
+     3. Ye directory mein jaayein:
+
+     1 cd C:\Users\Administrator\Downloads\Hackathon ll phase lll\phase02-todo-app
+
+     4. Phir ye command run karein ke kya context sahi hai:
+
+     1 kubectl config current-context
+
+     5. Phir dono deployments check karein:
+
+     1 kubectl get deployments
+
+     6. Agar deployments running hain toh sirf port-forward karein:
+
+     1 kubectl port-forward service/backend-service 8001:8001
+
+     7. Alag terminal mein:
+
+     1 kubectl port-forward service/frontend-service 3000:3000
+
+
+     Abhi wait karna padega kyonki ye components startup time lete hain. Aap 2-3 minute aur wait karke fir se check kar
+     sakte hain:
+
+     1 kubectl get pods -n logging
+     2 kubectl get pods -n monitoring
+
+    Iss time mein aap applications ko access kar sakte hain:
+     - Frontend: http://localhost:3000 ya http://localhost:31893
+     - Backend: http://localhost:8001 ya http://localhost:31066
+
+    Jab saare components start ho jaayenge toh aap monitoring aur logging systems bhi access kar paayenge:
+     - Grafana: http://localhost:31391 (admin/admin123 credentials)
+     - Kibana: http://localhost:5601 (jab tak available na ho)
+
+
+
+
+    Phir NodePort addresses ka use karein:
+        - Frontend: http://localhost:31893
+        - Backend: http://localhost:31066
+        - Grafana: http://localhost:31391
+        - Prometheus: http://localhost:31241
